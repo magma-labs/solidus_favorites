@@ -1,0 +1,35 @@
+<% admin_breadcrumb(link_to(plural_resource_name(Spree::Product), spree.admin_products_path)) %>
+<% admin_breadcrumb(link_to(plural_resource_name(Spree::Favorite), spree.admin_favorites_path)) %>
+<% admin_breadcrumb(t('spree.users')) %>
+
+<% content_for :page_title do %>
+  <%= t('spree.favorite_users') %>
+<% end %>
+
+<%= paginate @users, theme: 'solidus_admin' %>
+
+<% if @users.any? %>
+  <table class='index' id='listing_favorite_products_users'>
+    <thead>
+      <tr data-hook='admin_favorite_users_index_headers'>
+        <th><%= t('spree.email') %></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @users.each do |user| %>
+        <tr <%== "style='color: red;'" if user.deleted? %> id='<%= spree_dom_id user %>' data-hook='admin_favorite_users_index_rows'>
+          <td>
+            <%= user.email %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <div class='no-objects-found'>
+    <%= t('spree.no_results') %>
+  </div>
+<% end %>
+
+<%= paginate @users, theme: 'solidus_admin' %>

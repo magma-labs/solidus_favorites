@@ -1,0 +1,25 @@
+en:
+  activerecord:
+    attributes:
+      spree/favorite:
+        favorable: Favorable
+        user: User
+    models:
+      spree/favorite:
+        one: Favorite
+        other: Favorites
+  spree:
+    admin:
+      tab:
+        favorites: Favorites
+    add_favorite: Add Favorite
+    favorites: Favorites
+    favorites_settings: Favorite Settings
+    favorites_per_page: Per Page
+    favorite_users: Favorite Users
+    favorite_products: Favorite Products
+    go_to_product: Visit product page
+    my_favorites: My Favorites
+    remove_favorite: Remove Favorite
+    successfully_added_favorite: Successfully added favorite.
+    you_have_no_favorites_yet: You have no favorites yet.

@@ -1,0 +1,28 @@
+table.favorite-products .favorite-product-name p,
+table.favorite-products .favorite-product-name span {
+  display: block;
+}
+
+table.favorite-products .favorite-product-name span {
+  font-style: italic;
+}
+
+.account-my-favorite-products table .favorite_add_to_cart_link,
+.account-my-favorite-products table .favorite_remove_link,
+.account-my-favorite-products table .favorite_go_to_product_link {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.account-my-favorite-products table .favorite-product-actions .fa-refresh {
+  font-size: 18px;
+}
+
+#product-description [data-hook='favorite'] {
+  margin-top: 5px;
+}
+
+#product-description .favorite_product_link.fa-heart,
+#product-description .favorite_product_link.fa-heart-o {
+  font-size: 18px;
+}

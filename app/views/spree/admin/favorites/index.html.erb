@@ -1,0 +1,49 @@
+<% admin_breadcrumb(link_to(plural_resource_name(Spree::Product), spree.admin_products_path)) %>
+<% admin_breadcrumb(plural_resource_name(Spree::Favorite)) %>
+
+<%= paginate @favorites, theme: 'solidus_admin' %>
+
+<% if @favorites.any? %>
+  <table class='index' id='listing_products'>
+    <colgroup>
+       <col style='width: 15%;'>
+       <col style='width: 5%;'>
+       <col style='width: 50%;'>
+       <col style='width: 15%;'>
+       <col style='width: 15%;'>
+    </colgroup>
+
+    <thead>
+      <tr data-hook='admin_products_index_headers'>
+        <th><%= t('spree.sku') %></th>
+        <th colspan='2'><%= t('spree.name') %></th>
+        <th class='align-center'><%= t('spree.master_price') %></th>
+        <th class='align-center'><%= t('spree.favorite_users') %></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @favorites.each do |favorite| %>
+        <tr <%== "style='color: red;'" if favorite.deleted? %> id='<%= spree_dom_id favorite %>' data-hook='admin_favorites_index_rows'>
+          <td><%= favorite.sku %></td>
+          <td class='align-center'>
+            <% if favorite&.respond_to?(:gallery) %>
+                <%= link_to(render('spree/shared/image', image: favorite&.gallery&.images&.first, size: :small), admin_product_path(favorite), itemprop: 'image') %>
+              <% else %>
+                <%= link_to(image_tag(favorite.display_image.attachment(:small), itemprop: 'image'), admin_product_path(favorite), itemprop: 'url') %>
+              <% end %>
+          </td>
+          <td><%= link_to(favorite.try(:name), admin_product_path(favorite)) %></td>
+          <td class='align-center'><%= favorite&.display_price.to_html %></td>
+          <td class='align-center'><%= link_to favorite&.favorite_users.count, users_admin_favorite_path(id: favorite.id) %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+<% else %>
+  <div class='no-objects-found'>
+    <%= t('spree.no_results') %>
+  </div>
+<% end %>
+
+<%= paginate @favorites, theme: 'solidus_admin' %>

@@ -1,0 +1,56 @@
+<div data-hook='account_my_favorite_products' class='account-my-favorite-products'>
+  <h3><%= t('spree.my_favorites') %></h3>
+
+  <% if @favorites.present? %>
+    <table class='favorite-products order-summary'>
+      <thead>
+        <tr>
+          <th class='favorite-product-image'><%= t('spree.image') %></th>
+          <th class='favorite-product-name'><%= t('spree.name') %></th>
+          <th class='favorite-product-price'><%= t('spree.price') %></th>
+          <th class='favorite-product-action'><%= t('spree.action')%></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @favorites.each do |favorite| %>
+          <tr class="favorite_item <%= cycle('even', 'odd') %>" id='favorite_<%= favorite.id %>' data-product-id='<%= favorite&.favorable&.id %>' data-variant-id='<%= favorite&.favorable&.master&.id %>'>
+            <td class='favorite-product-image'>
+              <% if favorite&.favorable&.respond_to?(:gallery) %>
+                <%= link_to(render('spree/shared/image', image: favorite&.favorable&.gallery&.images&.first, size: :small), product_path(favorite&.favorable), itemprop: 'image') %>
+              <% else %>
+                <%= link_to(image_tag(favorite&.favorable.display_image.attachment(:small), itemprop: 'image'), product_path(favorite&.favorable), itemprop: 'url') %>
+              <% end %>
+            </td>
+            <td class='favorite-product-name'>
+              <%= favorite&.favorable.name %>
+            </td>
+            <td class='favorite-product-price'>
+              <% if price = favorite&.favorable.price_for(current_pricing_options) %>
+              <span class="price selling" itemprop="price" content="<%= price.to_d %>">
+                <%= price.to_html %>
+              </span>
+              <span itemprop='priceCurrency' content='<%= current_pricing_options.currency %>'></span>
+            <% end %>
+            </td>
+            <td class='favorite-product-actions'>
+              <div class='favorite-product-actions-links'>
+                <% if favorite.favorable.has_variants? %>
+                  <%= link_to t('spree.go_to_product'), product_path(favorite.favorable), class: 'favorite_go_to_product_link' %>
+                <% else %>
+                  <%= link_to t('spree.add_to_cart'), '#', class: 'favorite_add_to_cart_link', remote: true %>
+                <% end %>
+                <%= link_to t('spree.remove'), favorite_path(favorite), class: 'favorite_remove_link', method: :delete, remote: true %>
+              </div>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+  <% else %>
+    <div class='no-objects-found'>
+      <p><%= t('spree.you_have_no_favorites_yet') %></p>
+    </div>
+  <% end %>
+
+  <%= paginate @favorites %>
+</div
