@@ -1,7 +1,7 @@
 SolidusFavorites
 ================
 
-[![Build Status](https://travis-ci.org/jtapia/solidus_favorites.svg?branch=master)](https://travis-ci.org/jtapia/solidus_favorites)
+[![Build Status](https://travis-ci.org/magma-labs/solidus_favorites.svg?branch=master)](https://travis-ci.org/magma-labs/solidus_favorites)
 
 Solidus Favorite Products is an extension that allows the user to mark/unkmark a product as favorite from the product page.
 
