@@ -1,11 +1,13 @@
 # frozen_string_literal: true
 
+require 'spree/core'
+
 module SolidusFavorites
   class Engine < Rails::Engine
-    isolate_namespace Spree
-    engine_name 'solidus_favorites'
+    include SolidusSupport::EngineExtensions
 
-    config.autoload_paths += %W(#{config.root}/lib)
+    isolate_namespace ::Spree
+    engine_name 'solidus_favorites'
 
     # use rspec for tests
     config.generators do |g|
@@ -15,13 +17,5 @@ module SolidusFavorites
     initializer 'solidus_favorites.environment', before: :load_config_initializers do
       SolidusFavorites::Config = SolidusFavorites::Configuration.new
     end
-
-    def self.activate
-      Dir.glob(File.join(File.dirname(__FILE__), '../../app/**/*_decorator*.rb')) do |c|
-        Rails.configuration.cache_classes ? require(c) : load(c)
-      end
-    end
-
-    config.to_prepare(&method(:activate).to_proc)
   end
 end
