@@ -10,7 +10,6 @@ Dir[File.join(File.dirname(__FILE__), '/support/**/*.rb')].each { |file| require
 
 require 'solidus_favorites/factories'
 require 'spree/testing_support/controller_requests'
-require 'solidus_support/extension/feature_helper'
 
 RSpec.configure do |config|
   config.include Spree::TestingSupport::ControllerRequests, type: :controller
