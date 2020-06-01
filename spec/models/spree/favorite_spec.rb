@@ -9,12 +9,12 @@ describe Spree::Favorite do
   it { is_expected.to respond_to(:user) }
 
   describe 'scopes' do
-    let!(:favorite_1) { create(:favorite, guest_token: 'test') }
-    let!(:favorite_2) { create(:favorite, guest_token: 'invalid') }
-    let!(:favorite_3) { create(:favorite) }
-    let!(:favorite_4) { create(:favorite, guest_token: 'test') }
-    let!(:favorite_5) { create(:favorite, guest_token: 'invalid') }
-    let!(:favorite_6) { create(:favorite) }
+    let(:favorite_1) { create(:favorite, guest_token: 'test') }
+    let(:favorite_2) { create(:favorite, guest_token: 'invalid') }
+    let(:favorite_3) { create(:favorite) }
+    let(:favorite_4) { create(:favorite, guest_token: 'test') }
+    let(:favorite_5) { create(:favorite, guest_token: 'invalid') }
+    let(:favorite_6) { create(:favorite) }
 
     it '.by_guest_token' do
       expect(subject.class.by_guest_token('test')).
