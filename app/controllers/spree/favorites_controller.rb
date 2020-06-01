@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module Spree
   class FavoritesController < Spree::StoreController
     before_action :find_favorite, only: [:destroy]
@@ -11,7 +13,8 @@ module Spree
 
     def create
       @favorite = try_spree_current_user.favorites.new(favorite_params)
-     if @favorite.save
+
+      if @favorite.save
         flash.now[:success] = t('spree.successfully_added_favorite')
       else
         flash.now[:error] = @favorite.errors.full_messages.to_sentence

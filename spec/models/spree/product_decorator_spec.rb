@@ -8,10 +8,12 @@ describe Spree::Product do
 
   describe '.favorite' do
     let(:shipping_category) { create(:shipping_category) }
-    let(:favorite_product1) { create(:product,
-      shipping_category: shipping_category) }
-    let(:favorite_product2) { create(:product,
-      shipping_category: shipping_category) }
+    let(:favorite_product1) do
+      create(:product, shipping_category: shipping_category)
+    end
+    let(:favorite_product2) do
+      create(:product, shipping_category: shipping_category)
+    end
     let(:user1) { create(:user) }
     let(:user2) { create(:user) }
 
