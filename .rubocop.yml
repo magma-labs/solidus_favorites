@@ -4,10 +4,12 @@ AllCops:
   Exclude:
     - 'vendor/**/*'
     - '**/vendor/**/*'
-    - '*/spec/dummy/**/*'
+    - 'spec/dummy/**/*'
     - 'sandbox/**/*'
     - '**/templates/**/*'
     - 'lib/**/*'
+    - '*.gemspec'
+    - 'spec/spec_helper.rb'
   TargetRubyVersion: 2.4
 
 # Sometimes I believe this reads better
@@ -49,9 +51,6 @@ Style/WordArray:
   Enabled: false
 
 Style/ConditionalAssignment:
-  Enabled: false
-
-Performance/Count:
   Enabled: false
 
 Style/RaiseArgs:
@@ -107,11 +106,6 @@ Style/TrailingCommaInHashLiteral:
 # Symbol Arrays are ok and the %i syntax widely unknown
 Style/SymbolArray:
   Enabled: false
-
-Rails/DynamicFindBy:
-  Whitelist:
-    - find_by_param
-    - find_by_param!
 
 # We use a lot of
 #
@@ -320,4 +314,22 @@ Lint/UselessComparison:
   Enabled: false
 
 Lint/HandleExceptions:
+  Enabled: false
+
+Style/RescueStandardError:
+  Enabled: false
+
+Layout/CaseIndentation:
+  Enabled: false
+
+Style/MissingRespondToMissing:
+  Enabled: false
+
+Lint/UselessAssignment:
+  Enabled: false
+
+Style/MethodMissingSuper:
+  Enabled: false
+
+Lint/UnusedMethodArgument:
   Enabled: false
