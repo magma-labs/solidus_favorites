@@ -21,5 +21,4 @@ describe Spree::Favorite do
         to match_array([favorite_1, favorite_4])
     end
   end
-
 end
