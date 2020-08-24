@@ -35,7 +35,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'apparition', '~> 0.4'
   s.add_development_dependency 'capybara', '~> 3.29'
   s.add_development_dependency 'capybara-screenshot', '~> 1.0'
-  s.add_development_dependency 'codecov'
+  s.add_development_dependency 'codecov', '~> 0.2'
   s.add_development_dependency 'database_cleaner', '~> 1.7'
   s.add_development_dependency 'factory_bot_rails', '~> 5.1'
   s.add_development_dependency 'ffaker', '~> 2.13'
