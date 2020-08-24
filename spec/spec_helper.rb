@@ -4,7 +4,7 @@
 ENV['RAILS_ENV'] = 'test'
 
 # Run Coverage report
-require 'solidus_dev_support/rspec/coverage'
+# require 'solidus_dev_support/rspec/coverage'
 
 require File.expand_path('dummy/config/environment.rb', __dir__)
 
