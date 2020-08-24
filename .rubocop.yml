@@ -12,11 +12,6 @@ AllCops:
     - 'spec/spec_helper.rb'
   TargetRubyVersion: 2.4
 
-# Sometimes I believe this reads better
-# This also causes spacing issues on multi-line fixes
-Style/BracesAroundHashParameters:
-  Enabled: false
-
 # We use class vars and will have to continue doing so for compatability
 Style/ClassVars:
   Enabled: false
@@ -76,7 +71,7 @@ Layout/ElseAlignment:
 Layout/IndentationWidth:
   Enabled: false
 
-Layout/AlignParameters:
+Layout/ParameterAlignment:
   Enabled: false
 
 Layout/ClosingParenthesisIndentation:
@@ -85,13 +80,13 @@ Layout/ClosingParenthesisIndentation:
 Layout/MultilineMethodCallIndentation:
   Enabled: false
 
-Layout/IndentFirstArrayElement:
+Layout/FirstArrayElementIndentation:
   Enabled: false
 
-Layout/IndentFirstHashElement:
+Layout/FirstHashElementIndentation:
   Enabled: false
 
-Layout/AlignHash:
+Layout/HashAlignment:
   Enabled: false
 
 Style/TrailingCommaInArguments:
@@ -297,7 +292,7 @@ Style/FrozenStringLiteralComment:
 Style/LambdaCall:
   Enabled: false
 
-Naming/UncommunicativeMethodParamName:
+Naming/MethodParameterName:
   AllowedNames:
     - id
     - to
@@ -313,7 +308,7 @@ Naming/MemoizedInstanceVariableName:
 Lint/UselessComparison:
   Enabled: false
 
-Lint/HandleExceptions:
+Lint/SuppressedException:
   Enabled: false
 
 Style/RescueStandardError:
