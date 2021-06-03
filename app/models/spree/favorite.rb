@@ -1,10 +1,10 @@
 # frozen_string_literal: true
 
 module Spree
-  class Favorite < ActiveRecord::Base
+  class Favorite < ApplicationRecord
     FAVORABLES_ALLOWED = [
       'Spree::Product'
-    ]
+    ].freeze
 
     belongs_to :favorable, polymorphic: true
     belongs_to :user, class_name: Spree.user_class.to_s

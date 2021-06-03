@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
-require 'spec_helper'
-
-describe Spree::Admin::FavoritesController, type: :controller do
+RSpec.describe Spree::Admin::FavoritesController, type: :controller do
   let(:role) { Spree::Role.create!(name: 'user') }
   let(:user) { create(:user) }
   let(:roles) { [role] }

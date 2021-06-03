@@ -22,17 +22,21 @@
                 <%= link_to(image_tag(favorite&.favorable.display_image.attachment(:small), itemprop: 'image'), product_path(favorite&.favorable), itemprop: 'url') %>
               <% end %>
             </td>
+
             <td class='favorite-product-name'>
               <%= favorite&.favorable.name %>
             </td>
+
             <td class='favorite-product-price'>
-              <% if price = favorite&.favorable.price_for(current_pricing_options) %>
-              <span class="price selling" itemprop="price" content="<%= price.to_d %>">
-                <%= price.to_html %>
-              </span>
-              <span itemprop='priceCurrency' content='<%= current_pricing_options.currency %>'></span>
-            <% end %>
+              <% if price = favorite_price(favorite, current_pricing_options) %>
+                <span class="price selling" itemprop="price" content="<%= price.to_d %>">
+                  <%= price.to_html %>
+                </span>
+
+                <span itemprop='priceCurrency' content='<%= current_pricing_options.currency %>'></span>
+              <% end %>
             </td>
+
             <td class='favorite-product-actions'>
               <div class='favorite-product-actions-links'>
                 <% if favorite.favorable.has_variants? %>
@@ -42,6 +46,7 @@
                 <% end %>
                 <%= link_to t('spree.remove'), favorite_path(favorite), class: 'favorite_remove_link', method: :delete, remote: true %>
               </div>
+            </td>
           </tr>
         <% end %>
       </tbody>

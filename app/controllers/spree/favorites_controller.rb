@@ -2,13 +2,16 @@
 
 module Spree
   class FavoritesController < Spree::StoreController
-    before_action :find_favorite, only: [:destroy]
+    helper SolidusFavorites::FavoritesHelper
+
+    before_action :favorite, only: [:destroy]
 
     respond_to :html, :js
 
     def index
-      @favorites = try_spree_current_user.favorites.page(params[:page]).
-        per(SolidusFavorites::Config.favorites_per_page) || []
+      @favorites = try_spree_current_user.favorites
+                                         .page(params[:page])
+                                         .per(SolidusFavorites::Config.favorites_per_page) || []
     end
 
     def create
@@ -20,9 +23,7 @@ module Spree
         flash.now[:error] = @favorite.errors.full_messages.to_sentence
       end
 
-      respond_to do |format|
-        format.js
-      end
+      respond_with(&:js)
     end
 
     def destroy
@@ -32,14 +33,12 @@ module Spree
         flash.now[:error] = t('spree.favorite_unsuccessfully_removed')
       end
 
-      respond_with do |format|
-        format.js
-      end
+      respond_with(&:js)
     end
 
     private
 
-    def find_favorite
+    def favorite
       @favorite ||= try_spree_current_user.favorites.find(params[:id])
     end
 

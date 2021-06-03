@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class CreateTableSpreeFavorites < SolidusSupport::Migration[5.1]
+class CreateTableSpreeFavorites < SolidusSupport::Migration[4.2]
   def change
     create_table :spree_favorites do |t|
       t.belongs_to :favorable, polymorphic: true

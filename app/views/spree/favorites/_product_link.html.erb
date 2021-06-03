@@ -1,5 +1,5 @@
 <div itemprop='favorite' data-hook='favorite'>
-  <% if has_favorite?(@product) %>
+  <% if favorite?(@product) %>
     <%= link_to_with_icon '',
                           t('spree.remove_favorite'),
                           favorite_path(get_favorite(@product),
