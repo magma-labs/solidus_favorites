@@ -1,21 +1,19 @@
 # frozen_string_literal: true
 
-require 'spec_helper'
-
-describe Spree::Product do
+RSpec.describe Spree::Product do
   it { is_expected.to respond_to(:favorites) }
   it { is_expected.to respond_to(:favorite_users) }
 
   describe '.favorite' do
-    let(:shipping_category) { create(:shipping_category) }
-    let(:favorite_product1) do
+    let!(:shipping_category) { create(:shipping_category) }
+    let!(:favorite_product1) do
       create(:product, shipping_category: shipping_category)
     end
-    let(:favorite_product2) do
+    let!(:favorite_product2) do
       create(:product, shipping_category: shipping_category)
     end
-    let(:user1) { create(:user) }
-    let(:user2) { create(:user) }
+    let!(:user1) { create(:user) }
+    let!(:user2) { create(:user) }
 
     before do
       user1.favorites.create(favorable: favorite_product1)
@@ -24,8 +22,7 @@ describe Spree::Product do
     end
 
     it 'returns favorite products' do
-      expect(Spree::Product.favorite).
-        to match([favorite_product1, favorite_product2])
+      expect(described_class.favorite.count).to be(2)
     end
   end
 end

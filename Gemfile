@@ -1,8 +1,7 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
-
-git_source(:github) { |name| "https://github.com/#{name}.git" }
+git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 branch = ENV.fetch('SOLIDUS_BRANCH', 'master')
 gem 'solidus', github: 'solidusio/solidus', branch: branch
@@ -17,9 +16,9 @@ gem 'solidus_auth_devise'
 
 case ENV['DB']
 when 'mysql'
-  gem 'mysql2', '~> 0.4.10'
+  gem 'mysql2'
 when 'postgresql'
-  gem 'pg', '~> 0.21'
+  gem 'pg'
 else
   gem 'sqlite3'
 end

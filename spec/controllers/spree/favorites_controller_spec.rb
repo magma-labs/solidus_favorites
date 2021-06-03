@@ -1,8 +1,6 @@
 # frozen_string_literal: true
 
-require 'spec_helper'
-
-describe Spree::FavoritesController, type: :controller do
+RSpec.describe Spree::FavoritesController, type: :controller do
   let(:product) { create(:product) }
   let(:favorite) { create(:favorite) }
   let(:user) do
@@ -15,9 +13,11 @@ describe Spree::FavoritesController, type: :controller do
     allow(controller).to receive_messages(try_spree_current_user: user)
   end
 
-  context '#create' do
+  describe '#create' do
     context 'when invalid' do
       it 'fails' do
+        allow(controller).to receive_messages(try_spree_current_user: user)
+
         post :create, params: { id: 1, type: 'Spree::Order' }, format: :js
         expect(flash.now[:error]).to match('Favorable type is not included in the list')
       end
@@ -34,7 +34,7 @@ describe Spree::FavoritesController, type: :controller do
           expect(response).to render_template(:create)
         end
 
-        it 'should assign success message' do
+        it 'assign success message' do
           expect(flash.now[:success]).to match('Successfully added favorite.')
         end
       end
@@ -43,7 +43,7 @@ describe Spree::FavoritesController, type: :controller do
 
   describe '#index' do
     before do
-      expect(SolidusFavorites::Config).
+      allow(SolidusFavorites::Config).
         to receive(:favorites_per_page).and_return(10)
     end
 
