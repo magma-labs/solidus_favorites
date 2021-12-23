@@ -1,15 +1,37 @@
 Spree.ready(function() {
-  $('.favorite_product_link').on('click', function(e) {
-    e.preventDefault();
+  (function () {
+    var favoriteLink = $(".favorite_product_link");
 
-    var $el = $(e.currentTarget);
+    favoriteLink.on("click", function (e) {
+      e.preventDefault();
 
-    if ($el.hasClass('fa-heart-o')) {
-      $el.removeClass('fa-heart-o').addClass('fa-heart');
-    } else {
-      $el.removeClass('fa-heart').addClass('fa-heart-o');
-    }
-  })
+      var $el = $(e.currentTarget);
+
+      if ($el.hasClass("fa-heart-o")) {
+        $el.removeClass("fa-heart-o").addClass("fa-heart");
+      } else {
+        $el.removeClass("fa-heart").addClass("fa-heart-o");
+      }
+    });
+
+    var urlParams = new URLSearchParams(window.location.search);
+    var favorableId = urlParams.get("favorable_id");
+    var favorableType = urlParams.get("favorable_type");
+
+    if (!favorableId || !favorableType) return;
+
+    favoriteLink.each(function () {
+      var $el = $(this);
+
+      if (
+        $el.hasClass("fa-heart-o") &&
+        ($el.data("favorable-id") || 0).toString() === favorableId &&
+        $el.data("favorable-type") === favorableType
+      ) {
+        $el.click();
+      }
+    });
+  })();
 
   $('.favorite_add_to_cart_link').on('click', function(e) {
     e.preventDefault();

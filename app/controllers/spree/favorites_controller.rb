@@ -4,6 +4,8 @@ module Spree
   class FavoritesController < Spree::StoreController
     helper SolidusFavorites::FavoritesHelper
 
+    prepend_before_action :store_favorite_product_preference, only: :create
+    before_action :authenticate_spree_user!
     before_action :favorite, only: [:destroy]
 
     respond_to :html, :js
@@ -48,6 +50,14 @@ module Spree
 
     def model_class
       Spree::Favorite
+    end
+
+    def store_favorite_product_preference
+      return if spree_current_user
+
+      session[:spree_user_return_to] =
+        product_url(id: params[:favorable_id], favorable_id: params[:favorable_id], favorable_type: params[:favorable_type])
+      redirect_to login_path, notice: I18n.t('spree.login_to_add_favorite')
     end
   end
 end
