@@ -33,5 +33,5 @@ Gem::Specification.new do |s|
   s.add_dependency 'solidus_support', '~> 0.5'
   s.add_dependency 'deface', '~> 1.0'
 
-  s.add_development_dependency 'solidus_dev_support', '~> 2.3'
+  s.add_development_dependency 'solidus_dev_support', '~> 2.5'
 end
