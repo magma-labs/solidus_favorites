@@ -2,7 +2,7 @@
   var $el = document.querySelector("#favorable_<%= @favorite.favorable_type.demodulize.underscore %>_<%= @favorite.favorable_id %>");
 
   if ($el) {
-    $el.href = '<%= favorites_path(favorable_id: @favorite.favorable_id, favorable_type: @favorite.favorable_type) %>';
+    $el.href = '<%= raw favorites_path(favorable_id: @favorite.favorable_id, favorable_type: @favorite.favorable_type) %>';
     $el.dataset.method = 'post';
   } else {
     $("#favorite_<%= @favorite.id %>").remove();
