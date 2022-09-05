@@ -1,0 +1,23 @@
+example_id                                                         | status | run_time        |
+------------------------------------------------------------------ | ------ | --------------- |
+./spec/controllers/spree/admin/favorites_controller_spec.rb[1:1:1] | passed | 0.01157 seconds |
+./spec/controllers/spree/admin/favorites_controller_spec.rb[1:2:1] | passed | 0.08668 seconds |
+./spec/controllers/spree/favorites_controller_spec.rb[1:1:1:1]     | passed | 0.09046 seconds |
+./spec/controllers/spree/favorites_controller_spec.rb[1:1:2:1:1]   | passed | 0.11914 seconds |
+./spec/controllers/spree/favorites_controller_spec.rb[1:1:2:1:2]   | passed | 0.14715 seconds |
+./spec/controllers/spree/favorites_controller_spec.rb[1:2:1]       | passed | 0.08824 seconds |
+./spec/controllers/spree/favorites_controller_spec.rb[1:3:1]       | passed | 0.08728 seconds |
+./spec/controllers/spree/favorites_controller_spec.rb[1:3:2]       | passed | 1.61 seconds    |
+./spec/features/spree/favorite/favorites_index_page_spec.rb[1:1:1] | passed | 2.53 seconds    |
+./spec/lib/solidus_favorites/configuration_spec.rb[1:1]            | passed | 0.00884 seconds |
+./spec/lib/solidus_favorites/configuration_spec.rb[1:2]            | passed | 0.0039 seconds  |
+./spec/models/spree/favorite_spec.rb[1:1]                          | passed | 0.08402 seconds |
+./spec/models/spree/favorite_spec.rb[1:2]                          | passed | 0.08004 seconds |
+./spec/models/spree/favorite_spec.rb[1:3:1]                        | passed | 0.15634 seconds |
+./spec/models/spree/product_spec.rb[1:1]                           | passed | 0.00572 seconds |
+./spec/models/spree/product_spec.rb[1:2]                           | passed | 0.12038 seconds |
+./spec/models/spree/product_spec.rb[1:3:1]                         | passed | 1.24 seconds    |
+./spec/models/spree/user_spec.rb[1:1]                              | passed | 0.00481 seconds |
+./spec/models/spree/user_spec.rb[1:2]                              | passed | 0.00509 seconds |
+./spec/models/spree/user_spec.rb[1:3:1:1]                          | passed | 0.11273 seconds |
+./spec/models/spree/user_spec.rb[1:3:2:1]                          | passed | 0.15914 seconds |
