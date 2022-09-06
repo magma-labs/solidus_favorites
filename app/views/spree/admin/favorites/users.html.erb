@@ -18,7 +18,7 @@
 
     <tbody>
       <% @users.each do |user| %>
-        <tr <%== "style='color: red;'" if user.deleted? %> id='<%= spree_dom_id user %>' data-hook='admin_favorite_users_index_rows'>
+        <tr <%== "style='color: red;'" if user.discarded? %> id='<%= spree_dom_id user %>' data-hook='admin_favorite_users_index_rows'>
           <td>
             <%= user.email %>
           </td>

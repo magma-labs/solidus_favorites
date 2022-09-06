@@ -15,14 +15,14 @@ RSpec.describe Spree::Admin::FavoritesController, type: :controller do
   describe '#index' do
     it 'returns 200' do
       get :index
-      expect(response.status).to eq(200)
+      expect(response).to have_http_status(:ok)
     end
   end
 
   describe '#users' do
     it 'fetches the users who marked the product as favorite' do
       get :users, params: { id: product.id }, format: :js
-      expect(response.status).to eq(200)
+      expect(response).to have_http_status(:ok)
     end
   end
 end
