@@ -9,7 +9,8 @@
                           no_text: true,
                           remote: true,
                           id: "favorable_product_#{@product.id}",
-                          class: 'favorite_product_link fa fa-heart no-text with-tip' %>
+                          class: 'favorite_product_link fa fa-heart no-text with-tip',
+                          data: { favorable_id: @product.id, favorable_type: 'Spree::Product' } %>
   <% else %>
     <%= link_to_with_icon '',
                           t('spree.add_favorite'),
@@ -19,6 +20,7 @@
                           no_text: true,
                           remote: true,
                           id: "favorable_product_#{@product.id}",
-                          class: 'favorite_product_link fa fa-heart-o no-text with-tip' %>
+                          class: 'favorite_product_link fa fa-heart-o no-text with-tip',
+                          data: { favorable_id: @product.id, favorable_type: 'Spree::Product' } %>
   <% end %>
 </div>

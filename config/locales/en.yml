@@ -19,6 +19,8 @@ en:
     favorite_users: Favorite Users
     favorite_products: Favorite Products
     go_to_product: Visit product page
+    login_to_add_favorite: Please login to add to your favorites
+    login_to_view_favorites: Please login to view your favorites
     my_favorites: My Favorites
     remove_favorite: Remove Favorite
     successfully_added_favorite: Successfully added favorite.
